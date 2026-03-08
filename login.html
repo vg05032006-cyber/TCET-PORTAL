@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Login Portal</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+<style>
+body{
+    background: linear-gradient(135deg,#4e73df,#1cc88a);
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.card{
+    border-radius:20px;
+    padding:30px;
+    width:100%;
+    max-width:400px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 15px 30px rgba(0,0,0,0.3);
+}
+
+.nav-tabs .nav-link{
+    font-weight:600;
+}
+
+.login-title{
+    font-weight:bold;
+    color:#1e3c72;
+}
+
+.form-control{
+    border-radius:50px;
+    padding:12px 20px;
+}
+
+.btn-primary, .btn-dark{
+    border-radius:50px;
+    padding:10px;
+    font-weight:600;
+}
+
+.input-icon{
+    position:absolute;
+    left:15px;
+    top:50%;
+    transform:translateY(-50%);
+    color:#1e3c72;
+}
+
+.position-relative{
+    position:relative;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+<div class="row justify-content-center">
+<div class="col-md-4">
+
+<div class="card">
+<div class="card-body">
+
+<h3 class="text-center login-title mb-4">Login Portal</h3>
+
+<ul class="nav nav-tabs mb-3" id="loginTab" role="tablist">
+
+<li class="nav-item w-50 text-center">
+<button class="nav-link active w-100" data-bs-toggle="tab" data-bs-target="#student">
+Student
+</button>
+</li>
+
+<li class="nav-item w-50 text-center">
+<button class="nav-link w-100" data-bs-toggle="tab" data-bs-target="#admin">
+Admin
+</button>
+</li>
+
+</ul>
+
+<div class="tab-content">
+
+<!-- Student Login -->
+<div class="tab-pane fade show active" id="student">
+
+<div class="position-relative mb-3">
+    <i class="bi bi-envelope-fill input-icon"></i>
+    <input type="email" id="loginEmail" class="form-control" placeholder="Student Email">
+</div>
+
+<div class="position-relative mb-3">
+    <i class="bi bi-lock-fill input-icon"></i>
+    <input type="password" id="loginPassword" class="form-control" placeholder="Password">
+</div>
+
+<button class="btn btn-primary w-100" onclick="studentLogin()">
+Student Login
+</button>
+
+</div>
+
+<!-- Admin Login -->
+<div class="tab-pane fade" id="admin">
+
+<div class="position-relative mb-3">
+    <i class="bi bi-person-fill input-icon"></i>
+    <input type="text" id="adminUsername" class="form-control" placeholder="Admin Username">
+</div>
+
+<div class="position-relative mb-3">
+    <i class="bi bi-lock-fill input-icon"></i>
+    <input type="password" id="adminPassword" class="form-control" placeholder="Password">
+</div>
+
+<button class="btn btn-dark w-100" onclick="adminLogin()">
+Admin Login
+</button>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+// Student Login
+function studentLogin(){
+    let email = document.getElementById("loginEmail").value.trim();
+    let password = document.getElementById("loginPassword").value.trim();
+
+    if(!email || !password){
+        alert("Please fill all fields!");
+        return;
+    }
+
+    // Get students array from localStorage
+    let students = JSON.parse(localStorage.getItem("students")) || [];
+
+    // Find student with matching email and password
+    let student = students.find(s => s.email === email && s.password === password);
+
+    if(student){
+        // Save logged-in student info
+        localStorage.setItem("loggedInStudent", JSON.stringify(student));
+        window.location.href = "student_dashboard.html"; // Redirect to student dashboard
+    } else {
+        alert("Invalid Student Email or Password");
+    }
+}
+
+// Admin Login
+function adminLogin(){
+    let username = document.getElementById("adminUsername").value.trim();
+    let password = document.getElementById("adminPassword").value.trim();
+
+    if(username === "admin" && password === "admin123"){
+        localStorage.setItem("adminLoggedIn","true"); // optional flag
+        window.location.href = "admin_dashboard.html"; // Redirect to admin dashboard
+    } else {
+        alert("Invalid Admin Credentials");
+    }
+}
+</script>
+
+</body>
+</html>

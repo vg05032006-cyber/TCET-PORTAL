@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Student Dashboard - TCET Portal</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+<style>
+body{
+    background:#f4f6f9;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.navbar{
+    background:linear-gradient(90deg,#1e3c72,#2a5298);
+}
+
+.card{
+    border:none;
+    border-radius:15px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.card:hover{
+    transform: translateY(-10px) scale(1.02);
+    box-shadow:0 15px 30px rgba(0,0,0,0.2);
+}
+
+.icon{
+    font-size:50px;
+    margin-bottom:15px;
+}
+
+.footer{
+    margin-top:60px;
+    padding:20px;
+    text-align:center;
+    color:gray;
+    font-size:14px;
+}
+
+.profile-card{
+    border-radius:15px;
+    padding:20px;
+    background:white;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+    margin-bottom:30px;
+    text-align:center;
+}
+
+.profile-card h3{
+    margin-bottom:5px;
+    color:#1e3c72;
+}
+
+.profile-card p{
+    color:gray;
+    margin-bottom:0;
+}
+
+.btn-professional{
+    border-radius:50px;
+    padding:10px;
+    font-weight:600;
+    transition:all 0.3s ease;
+}
+
+.btn-professional:hover{
+    transform:scale(1.05);
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+</style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-dark shadow">
+<div class="container">
+    <a class="navbar-brand fw-bold">TCET Dashboard</a>
+    <button class="btn btn-light" onclick="logout()">
+        <i class="bi bi-box-arrow-right"></i> Logout
+    </button>
+</div>
+</nav>
+
+<!-- Profile Section -->
+<div class="container mt-4">
+    <div class="profile-card">
+        <h3 id="studentName">Student Name</h3>
+        <p id="studentEmail">student@example.com</p>
+    </div>
+</div>
+
+<!-- Dashboard Cards -->
+<div class="container mt-3">
+<div class="row g-4">
+
+    <!-- Assignments -->
+    <div class="col-md-4">
+        <div class="card shadow text-center p-4" onclick="openPage('subjects.html')">
+            <div class="icon text-primary"><i class="bi bi-journal-text"></i></div>
+            <h4>Assignments</h4>
+            <p class="text-muted">View subject assignments</p>
+            <span class="btn btn-primary w-100 btn-professional mt-3">Open</span>
+        </div>
+    </div>
+
+    <!-- Notes -->
+    <div class="col-md-4">
+        <div class="card shadow text-center p-4" onclick="openPage('notes.html')">
+            <div class="icon text-success"><i class="bi bi-file-earmark-text"></i></div>
+            <h4>Notes</h4>
+            <p class="text-muted">Access study material</p>
+            <span class="btn btn-success w-100 btn-professional mt-3">View Notes</span>
+        </div>
+    </div>
+
+    <!-- Premium -->
+    <div class="col-md-4">
+        <div class="card shadow text-center p-4" onclick="openPage('subscription.html')">
+            <div class="icon text-warning"><i class="bi bi-star-fill"></i></div>
+            <h4>Premium</h4>
+            <p class="text-muted">Unlock premium content</p>
+            <span class="btn btn-warning w-100 btn-professional mt-3">Upgrade</span>
+        </div>
+    </div>
+
+</div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+© 2026 TCET Student Portal • Student Dashboard
+</div>
+
+<script>
+// Get logged-in student info
+const loggedInStudent = JSON.parse(localStorage.getItem("loggedInStudent"));
+
+if(!loggedInStudent){
+    alert("Please login first!");
+    window.location.href = "login.html";
+} else {
+    document.getElementById("studentName").innerText = loggedInStudent.name;
+    document.getElementById("studentEmail").innerText = loggedInStudent.email;
+}
+
+// Page navigation
+function openPage(url){
+    // Ensure file exists
+    fetch(url, { method: 'HEAD' })
+    .then(res => {
+        if(res.ok){
+            window.location.assign(url);
+        } else {
+            alert("Page not found: " + url);
+        }
+    })
+    .catch(() => alert("Error opening page: " + url));
+}
+
+// Logout
+function logout(){
+    localStorage.removeItem("loggedInStudent");
+    window.location.href = "login.html";
+}
+</script>
+
+</body>
+</html>

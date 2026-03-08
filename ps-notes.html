@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PS Modules - TCET Student Portal</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+<style>
+body {
+    font-family: 'Segoe UI';
+    background: #f5f6fa;
+    padding-bottom: 50px;
+}
+
+.navbar {
+    background: #1e3c72;
+}
+
+.page-title {
+    margin-top: 90px;
+    text-align: center;
+}
+
+.card {
+    border: none;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* ensures download button stays at bottom */
+    min-height: 280px; /* all cards same height */
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.icon {
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+
+.module-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.module-desc {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 15px;
+    flex-grow: 1; /* ensures all cards expand equally */
+}
+
+.download-btn {
+    margin-top: 10px;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 50px;
+    padding: 20px;
+    color: gray;
+}
+
+@media (max-width: 767px) {
+    .card {
+        min-height: 240px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold">TCET Student Portal</a>
+        <div>
+            <a href="index.html" class="btn btn-light btn-sm">Home</a>
+            <a href="notes.html" class="btn btn-primary btn-sm">Back to Notes</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Title -->
+<div class="container page-title">
+    <h1 class="text-primary">PS Modules</h1>
+    <p>Problem Solving - Modules 1 to 6</p>
+</div>
+
+<!-- Modules -->
+<div class="container mt-5">
+    <div class="row g-4">
+
+        <!-- Module 1 -->
+        <div class="col-md-4">
+            <div class="card">
+                <i class="bi bi-1-circle icon text-primary"></i>
+                <div class="module-title">Module 1: Introduction</div>
+                <div class="module-desc">
+                    Basics of problem solving, algorithms, and flowcharts.
+                </div>
+                <a href="pdfs/ps-module1.pdf" download class="btn btn-success btn-sm download-btn">
+                    <i class="bi bi-download"></i> Download PDF
+                </a>
+            </div>
+        </div>
+
+        <!-- Module 2 -->
+        <div class="col-md-4">
+            <div class="card">
+                <i class="bi bi-2-circle icon text-success"></i>
+                <div class="module-title">Module 2: Decision Making & Loops</div>
+                <div class="module-desc">
+                    If-Else, nested conditions, for, while, do-while loops.
+                </div>
+                <a href="pdfs/ps-module2.pdf" download class="btn btn-success btn-sm download-btn">
+                    <i class="bi bi-download"></i> Download PDF
+                </a>
+            </div>
+        </div>
+
+        <!-- Module 3 -->
+        <div class="col-md-4">
+            <div class="card">
+                <i class="bi bi-3-circle icon text-danger"></i>
+                <div class="module-title">Module 3: Arrays & Strings</div>
+                <div class="module-desc">
+                    Array basics, string handling, searching and sorting.
+                </div>
+                <a href="pdfs/ps-module3.pdf" download class="btn btn-success btn-sm download-btn">
+                    <i class="bi bi-download"></i> Download PDF
+                </a>
+            </div>
+        </div>
+
+        <!-- Module 4 -->
+        <div class="col-md-4">
+            <div class="card">
+                <i class="bi bi-4-circle icon text-warning"></i>
+                <div class="module-title">Module 4: Functions</div>
+                <div class="module-desc">
+                    User-defined functions, passing arguments, return values, recursion.
+                </div>
+                <a href="pdfs/ps-module4.pdf" download class="btn btn-success btn-sm download-btn">
+                    <i class="bi bi-download"></i> Download PDF
+                </a>
+            </div>
+        </div>
+
+        <!-- Module 5 -->
+        <div class="col-md-4">
+            <div class="card">
+                <i class="bi bi-5-circle icon text-info"></i>
+                <div class="module-title">Module 5: Searching & Sorting</div>
+                <div class="module-desc">
+                    Linear search, binary search, bubble sort, selection sort.
+                </div>
+                <a href="pdfs/ps-module5.pdf" download class="btn btn-success btn-sm download-btn">
+                    <i class="bi bi-download"></i> Download PDF
+                </a>
+            </div>
+        </div>
+
+        <!-- Module 6 -->
+        <div class="col-md-4">
+            <div class="card">
+                <i class="bi bi-6-circle icon text-secondary"></i>
+                <div class="module-title">Module 6: Advanced Problem Solving</div>
+                <div class="module-desc">
+                    Pointers, dynamic memory, modular programming techniques.
+                </div>
+                <a href="pdfs/ps-module6.pdf" download class="btn btn-success btn-sm download-btn">
+                    <i class="bi bi-download"></i> Download PDF
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="footer">
+    © 2026 TCET Student Portal
+</div>
+
+</body>
+</html>
